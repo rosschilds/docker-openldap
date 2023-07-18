@@ -27,6 +27,6 @@ jobs:
       - name: Build container
         uses: docker/build-push-action@v4
         with:
-          context: ./bitnami/openldap/2.6/debian-11
+          context: ./docker-openldap/image
           push: true
           tags: ${{ steps.meta.outputs.tags }}
