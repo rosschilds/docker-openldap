@@ -10,6 +10,10 @@ ARG LDAP_OPENLDAP_UID
 ARG PQCHECKER_VERSION=2.0.0
 ARG PQCHECKER_MD5=c005ce596e97d13e39485e711dcbc7e1
 
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131
+
+
 # Add openldap user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 # If explicit uid or gid is given, use it.
 RUN if [ -z "${LDAP_OPENLDAP_GID}" ]; then groupadd -g 911 -r openldap; else groupadd -r -g ${LDAP_OPENLDAP_GID} openldap; fi \
